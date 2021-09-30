@@ -1,9 +1,20 @@
 # Pomodoro Timer
 
+## This Website is deployed using gh-pages
+[View Pomodoro Timer Here](https://jaythomasv29.github.io/pomodoro-timer-v1/)
+1. `npm install gh-pages --save-dev`
+1. add following details to `package.json`
+1. `"homepage": "https://jaythomasv29.github.io/pomodoro-timer-v1/",`
+1. ```"scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",```
+1. once GH reposity is initialized, run command `npm build`
+1. In GitHub go to Settings->Pages and select gh-pages branch
+
 The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s.
 The technique uses a timer to break down work into intervals, traditionally 25 minutes in length, separated by short breaks. Each interval is known as a pomodoro, from the Italian word for 'tomato', after the tomato-shaped kitchen timer that Cirillo used as a university student.
 
-You will implement a Pomodoro timer that follows these steps (simplified from the original technique):
+Here is a breakdown of the Pomodoro timer that follows these steps: (simplified from the original technique):
 
 1. Set the focus duration (default to 25 minutes, no less than 5 or more than 60).
 1. Set the break duration (default to 5 minutes, no less than 1 or more than 15).
@@ -57,7 +68,6 @@ npm install
 
 ## Specific instruction
 
-1. The code has various TODO items that should help you build the project as expected. With that said, feel free to make the changes you feel are necessary to accomplish the tasks.
 1. Break up the code into at least two additional components that have a single responsibility.
 1. The user cannot change the duration of the focus or break during a focus or break session. 
 1. Display durations as `mm:ss`. i.e. 05:00 for 5 minutes or 18:45 for eighteen minutes and forty-five seconds.
@@ -67,16 +77,12 @@ npm install
 
 Using `setInterval` with React functional components requires a custom hook. 
 
-We have provided a custom [`useInterval`](./src/useInterval/index.js) hook for you to use that is already setup to start and stop with the play/pause buttons
-
-You may not have learned about hooks yet, but don't worry, this function works exactly like `setInterval` except you don't use `clearInterval` to stop it. 
 
 As it is currently configured, the `useInterval` will execute the code in the callback every second, unless `isTimerRunning` is set to false.
 This should be sufficient to implement the pomodoro timer.
 
 ## Playing Audio alarm
 
-Use the following code to play an alarm when the time expires. There are sample mp3 files located in the `public` directory that you can use, use any mp3 you like..
 ```javascript
 new Audio(`${process.env.PUBLIC_URL}/alarm/submarine-dive-horn.mp3`).play();
 ```
